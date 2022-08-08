@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="resources/css/app.css">
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-success bg-success fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-secondary bg-secondary fixed-top">
             <a class="navbar-brand text-white" href="/courses">
                 <img src= {{ asset('logo_transparent.png') }} width="70" height="70" alt="">
             </a>
