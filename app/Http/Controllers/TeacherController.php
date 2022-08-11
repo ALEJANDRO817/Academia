@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\storePersonajeRequest;
-use App\Models\Course;
-use Illuminate\Contracts\View\View;
+use App\Http\Requests\storeTeacherRequest;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
-class CourseController extends Controller
+class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $grade = Course::all();//Traemos toda la info de la tabla courses a traves del modelo y el método all()
-        return view('courses.index', compact('grade'));//Se adjunta grade a la vista para poderlo usar, usando compact
+        $tutor = Teacher::all();//Traemos toda la info de la tabla courses a traves del modelo y el método all()
+        return view('teachers.index', compact('tutor'));//Se adjunta grade a la vista para poderlo usar, usando compact
         // return $grade;
     }
 
@@ -28,7 +27,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('courses.create');
+        return view('teachers.create');
     }
 
     /**
@@ -37,7 +36,7 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(storePersonajeRequest $request)
+    public function store(storeTeacherRequest $request)
     {
         //  se implementa Validacion
             // $dataValidate = $request->validate([
@@ -46,14 +45,14 @@ class CourseController extends Controller
             // ]);
         //Se devuelve la petición hecha al servidor
         // return $request->all();
-        $grade = new Course();//Crear una instancia de la clase Curso
-        $grade->name = $request->input('name');
-        $grade->description = $request->input('description');
-        $grade->duration = $request->input('duration');
+        $tutor = new Teacher();//Crear una instancia de la clase Curso
+        $tutor->name = $request->input('name');
+        $tutor->description = $request->input('description');
+        $tutor->duration = $request->input('duration');
         if($request->hasFile('imagen')){
-            $grade->imagen = $request->file('imagen')->store('public/courses');
+            $tutor->imagen = $request->file('imagen')->store('public/teachers');
         }
-        $grade->save();//Comando para registrar la info en la bd
+        $tutor->save();//Comando para registrar la info en la bd
         return 'El curso se ha guardado exitosamente';
         // return $grade->description;
         // return $grade;
@@ -68,8 +67,8 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        $grade = Course::find($id);
-        return view('courses.show', compact('grade'));
+        $tutor = Teacher::find($id);
+        return view('teachers.show', compact('tutor'));
         // return 'El id de este curso es: ' . $id;
     }
 
@@ -81,7 +80,7 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        $grade = Course::find($id);
+        $tutor = Teacher::find($id);
         // return 'El id de este curso es: ' . $id;
         // return 'La iformación que ud quiere actualizar, se vería en formato array...' . $grade;
         return view('courses.edit', compact('grade'));
@@ -96,13 +95,13 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $grade = Course::find($id);
+        $tutor = Teacher::find($id);
         // return $grade;
-        $grade->fill($request->except('imagen'));
+        $tutor->fill($request->except('imagen'));
         if($request->hasFile('imagen')){
-            $grade->imagen = $request->file('imagen')->store('public/courses');
+            $tutor->imagen = $request->file('imagen')->store('public/courses');
         }
-        $grade->save();
+        $tutor->save();
         // return $request;
         return 'La información del curso se ha actualizado exitosamente';
     }
@@ -115,9 +114,9 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        $grade = Course::find($id);
+        $tutor = Teacher::find($id);
 
-        $urlImagenBD = $grade->imagen;
+        $urlImagenBD = $tutor->imagen;
         // return $urlImagenBD;
         // $rutaCompleta = public_path().$urlImagenBD;
         // return $rutaCompleta;
@@ -125,7 +124,7 @@ class CourseController extends Controller
         $rutaCompleta = public_path().$nombreImagen;
         // return $rutaCompleta;
         unlink($rutaCompleta);
-        $grade ->delete();
+        $tutor ->delete();
         return 'registro
         eliminado correctamente';
 
