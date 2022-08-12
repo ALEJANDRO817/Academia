@@ -18,6 +18,9 @@
                     <li class="nav-item active">
                         <a class="nav-link text-white" href="/teachers/create">Agregar Docente<span class="sr-only">(current)</span></a>
                     </li>
+                    <li class="nav-item active navbar-nav mr-auto">
+                        <a class="nav-link text-white" href="/courses">Cursos<span class="sr-only">(current)</span></a>
+                    </li>
                 </ul>
             </div>
         </nav>

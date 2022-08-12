@@ -19,7 +19,7 @@
                         <a class="nav-link text-white" href="/courses/create">Crear curso<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link text-white" href="/teachers">Agregar Docente<span class="sr-only">(current)</span></a>
+                        <a class="nav-link text-white" href="/teachers">Docentes<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link text-white" href="/about_us">Sobre nosotros<span class="sr-only">(current)</span></a>

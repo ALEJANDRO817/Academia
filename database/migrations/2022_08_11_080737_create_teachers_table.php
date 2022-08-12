@@ -18,11 +18,11 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('Lastname');
-            $table->integer('colelle_degree');
+            $table->string('colelle_degree');
             $table->integer('age');
-            $table->integer('contract_date');
-            $table->integer('imagen');
-            $table->integer('identity_document');
+            $table->date('contract_date');
+            $table->string('imagen');
+            $table->string('identity_document');
 
         });
     }

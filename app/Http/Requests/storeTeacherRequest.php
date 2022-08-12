@@ -30,8 +30,8 @@ class storeTeacherRequest extends FormRequest
                 'colelle_degree' => 'required|:50',
                 'age' => 'required|size:2',
                 'contract_date' => 'nullable|date',
-                'imagen' => 'required|max:60',
-                'identity_document' => 'required|:25'
+                'imagen' => 'required|file|max:5120',
+                'identity_document' => 'required'
 
 
         ];

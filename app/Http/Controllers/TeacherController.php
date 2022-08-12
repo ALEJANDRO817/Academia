@@ -15,9 +15,9 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $tutor = Teacher::all();//Traemos toda la info de la tabla courses a traves del modelo y el método all()
-        return view('teachers.index', compact('tutor'));//Se adjunta grade a la vista para poderlo usar, usando compact
-        // return $grade;
+        $tutor = Teacher::all();//Traemos toda la info de la tabla tutor a traves del modelo y el método all()
+        return view('teachers.index', compact('tutor'));//Se adjunta tutor a la vista para poderlo usar, usando compact
+        // return $tutor;
     }
 
     /**
@@ -47,13 +47,22 @@ class TeacherController extends Controller
         // return $request->all();
         $tutor = new Teacher();//Crear una instancia de la clase Curso
         $tutor->name = $request->input('name');
-        $tutor->description = $request->input('description');
-        $tutor->duration = $request->input('duration');
+        $tutor->Lastname = $request->input('Lastname');
+        $tutor->colelle_degree = $request->input('colelle_degree');
+        $tutor->age = $request->input('age');
+        $tutor->contract_date = $request->input('contract_date');
+        $tutor->imagen = $request->input('imagen');
+        $tutor->identity_document = $request->input('identity_document');
+
         if($request->hasFile('imagen')){
             $tutor->imagen = $request->file('imagen')->store('public/teachers');
         }
+        if($request->hasFile('identity_document')){
+            $tutor->identity_document = $request->file('identity_document')->store('public/identity_document');
+        }
+
         $tutor->save();//Comando para registrar la info en la bd
-        return 'El curso se ha guardado exitosamente';
+        return view('teachers.add_teacher');
         // return $grade->description;
         // return $grade;
         // return $request->input('name');
@@ -82,8 +91,8 @@ class TeacherController extends Controller
     {
         $tutor = Teacher::find($id);
         // return 'El id de este curso es: ' . $id;
-        // return 'La iformación que ud quiere actualizar, se vería en formato array...' . $grade;
-        return view('courses.edit', compact('grade'));
+        // return 'La iformación que usted quiere actualizar, se vería en formato array...' . $grade;
+        return view('teachers.edit', compact('tutor'));
     }
 
     /**
@@ -99,11 +108,15 @@ class TeacherController extends Controller
         // return $grade;
         $tutor->fill($request->except('imagen'));
         if($request->hasFile('imagen')){
-            $tutor->imagen = $request->file('imagen')->store('public/courses');
+            $tutor->imagen = $request->file('imagen')->store('public/teachers');
         }
+        if($request->hasFile('identity_document')){
+            $tutor->identity_document = $request->file('identity_document')->store('public/identity_document');
+        }
+
         $tutor->save();
         // return $request;
-        return 'La información del curso se ha actualizado exitosamente';
+        return view('teachers.creat_teacher');
     }
 
     /**
@@ -124,9 +137,14 @@ class TeacherController extends Controller
         $rutaCompleta = public_path().$nombreImagen;
         // return $rutaCompleta;
         unlink($rutaCompleta);
-        $tutor ->delete();
-        return 'registro
-        eliminado correctamente';
+        $urlDocument = $tutor->identity_document;
+         $documentName = str_replace('public/', '\storage\\', $urlDocument);
+         $fullRoute = public_path() . $documentName;
+         unlink($fullRoute);
+         $tutor->delete();
+         return view('teachers.del_teacher');
+        // return 'registro
+        // eliminado correctamente';
 
     }
 }

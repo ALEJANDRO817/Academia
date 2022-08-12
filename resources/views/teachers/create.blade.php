@@ -35,7 +35,7 @@
                             <input id="Lastname" class="form-control" type="text" name="Lastname">
                         </div>
                         <div class="form-group">
-                            <label for="colelle_degree"><b>Titulo Uni:</b></label>
+                            <label for="colelle_degree"><b>Titulo Universitario:</b></label>
                             <input id="colelle_degree" class="form-control" type="text" name="colelle_degree">
                         </div>
                         <div class="form-group">
@@ -48,11 +48,11 @@
                         </div>
                         <div class="form-group">
                             <label for="imagen"><b>Cargue imagen del docente:</b></label>
-                            <input id="imagen" class="" type="file" name="imagen">
+                            <input id="imagen" class="" type="file" name="imagen" accept="image/*">
                         </div>
                         <div class="form-group">
                             <label for="identity_document"><b>Documento identidad:</b></label>
-                            <input id="identity_document" class="" type="file" name="identity_document">
+                            <input id="identity_document" class="" type="file"  name="identity_document" accept="application/pdf">
                         </div>
                         <br>
                         <div class="button text-center">
