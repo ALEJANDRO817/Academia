@@ -1,0 +1,25 @@
+comandos para trabajar en repositorio externo 
+
+*clonar repositorio
+	git clone url 
+*Ver url de repositorio
+	git remote -v
+*Renombrar repositorio
+git remote rename origin $nombre_nuevo
+
+*Añadir repositorio remoto
+git remote add origin $url_propio
+
+*añadir repositorio original 
+git remote add origin $nombre $url_original
+
+*crear rama 
+git checkout -b $nombre_rama
+
+*agregar archivo a git 
+git add $nombre_archivo
+
+*Crear comentario
+git commit -m "$mensaje"
+
+*git push $nombre_nuevo $nombre_rama
