@@ -105,8 +105,8 @@ class TeacherController extends Controller
     public function update(Request $request, $id)
     {
         $tutor = Teacher::find($id);
-        // return $grade;
-        $tutor->fill($request->except('imagen'));
+
+        $tutor->fill($request->except('imagen', 'identity_document'));
         if($request->hasFile('imagen')){
             $tutor->imagen = $request->file('imagen')->store('public/teachers');
         }

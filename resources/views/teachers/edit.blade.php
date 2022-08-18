@@ -40,12 +40,12 @@
                             <label for="imagen"><b>Cargue imagen del docente:</b></label>
                             <br>
                             <label for="identity_document"><img src="{{ Storage::url($tutor->imagen) }}" width="70" height="70" class="mb-5"></label>
-                            <input id="imagen" class="" type="file" name="imagen" value="{{$tutor->imagen}}">
+                            <input id="imagen" class="" type="file" name="imagen"  accept="image/*" value="{{$tutor->imagen}}">
                         </div>
                         <div class="form-group">
                             <label for="identity_document"><b>Documento identidad:</b></label>
                             <label for="identity_document"><iframe width="350" height="350" src="{{Storage::url($tutor->identity_document)}}"></iframe></label>
-                            <input id="identity_document" class="" type="file" name="identity_document">
+                            <input id="identity_document" class="" type="file" name="identity_document" accept="application/pdf">
                         </div>
                         <br>
                         <div class="button text-center">
