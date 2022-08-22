@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subject extends Model
 {
+    protected $fillable = ['name_subject', 'timetable'];
     use HasFactory;
 }
