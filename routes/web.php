@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\PriceController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +57,4 @@ Route::get('/about_us', function () {
 });
 
 Route::resource('teachers', TeacherController::class);
+Route::resource('students', StudentController::class);
