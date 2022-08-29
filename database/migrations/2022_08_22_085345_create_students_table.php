@@ -15,24 +15,24 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->enum('Document_type', ['CC', 'TI', 'CE']);
             $table->integer('document_number');
             $table->string('identify_document');
-            $table->string('document_issunig_country');
-            $table->string('issuing_department');
-            $table->string('issuing_municipality');
-            $table->date('expedition_date');
-            $table->string('name');
+            $table->unsignedBigInteger('issuing_municipality');
+            $table->date('id_expedition_date');
+            $table->string('names');
             $table->string('first_last_name');
             $table->string('second_last_name');
             $table->enum('gender', ['M', 'F', 'OTROS']);
             $table->date('birth_date');
-            $table->string('birth_country');
-            $table->string('birth_departament');
-            $table->string('birth_municipality');
+            $table->unsignedBigInteger('id_birth_municipality');
             $table->integer('stratum');
+            $table->timestamps();
+            //foraneas
+            $table->foreign('issuing_municipality')->references('id')->on('municipalities')->onDelete('cascade')->onUpdate('cascade');;
+            $table->foreign('id_birth_municipality')->references('id')->on('municipalities')->onDelete('cascade')->onUpdate('cascade');;
         });
+
     }
 
     /**

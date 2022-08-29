@@ -9,4 +9,8 @@ class Teacher extends Model
 {
     protected $fillable = ['name', 'Lastname', 'colelle_degree', 'age', 'contract_date', 'imagen', 'identity_document'];
     use HasFactory;
+
+    public function subjects(){
+        return $this->belongsTo(Subject::class);
+    }
 }

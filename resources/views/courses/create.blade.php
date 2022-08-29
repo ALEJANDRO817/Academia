@@ -40,7 +40,7 @@
                         </div>
                         <div class="form-group">
                             <label for="imagen"><b>Cargue la imagen del curso:</b></label>
-                            <input id="imagen" class="" type="file" name="imagen">
+                            <input id="imagen" class="" type="file" name="imagen" accept="image/*">
                         </div>
                         <br>
                         <div class="button text-center">

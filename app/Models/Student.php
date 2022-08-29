@@ -7,10 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    protected $fillable = ['document_type', 'document_number', 'identify_document',
-     'document_issunig_country', 'shipping_departament', 'municipality_expedition',
-     'expedition_date', 'names', 'last_name', 'second_last_name', 'gender', 'date_birth',
-     'country_birth', 'departament_birth', 'municipality_birth', 'stratum'];
     use HasFactory;
+    protected $fillable = ['Document_type', 'document_number', 'identify_document','issuing_municipality',
+     'id_expedition_date', 'names', 'first_last_name', 'second_last_name', 'gender', 'birth_date',
+     'id_birth_municipality', 'stratum'];
+
+    public function municipalities(){
+        return $this->belongsTo(Municipality::class);
+    }
+    public function courses(){
+        return $this->belongsTo(Course::class);
+    }
+
+
+
 
 }

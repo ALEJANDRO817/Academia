@@ -23,7 +23,10 @@ return new class extends Migration
             $table->date('contract_date');
             $table->string('imagen');
             $table->string('identity_document');
-
+            $table->unsignedBigInteger('subject_id');
+            $table->unsignedBigInteger('courses_id');
+            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade')->onUpdate('cascade');;
+            $table->foreign('courses_id')->references('id')->on('courses')->onDelete('cascade')->onUpdate('cascade');;
         });
     }
 

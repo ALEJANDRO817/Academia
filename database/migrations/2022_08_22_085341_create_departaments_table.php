@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('subjects', function (Blueprint $table) {
+        Schema::create('departaments', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name_subject');
-            $table->integer('timetable');
+            $table->string('name_departament');
+            $table->unsignedBigInteger('id_country_belongs');
+            $table->foreign('id_country_belongs')->references('id')->on('countries')->onDelete('cascade')->onUpdate('cascade');;
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subjects');
+        Schema::dropIfExists('departaments');
     }
 };

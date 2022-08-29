@@ -19,43 +19,46 @@
 
 
 
-                    <div class="container">
+
                         <div class="row">
                          <div class="col-6">
 
                             <div class="form-group">
-                                <label for="description"><b>Documento de Identidad*</b></label>
+                                <label><b>Documento de Identidad*</b></label>
                                 <div  >
-                                    <label >Tipo de documento *</label>
-                                    <select class="form-select form-control" id="floatingSelect" aria-label="Floating label select example">
-                                      <option value="1">Cédula de Ciudadanía</option>
-                                      <option value="2">Tarjeta de Identidad</option>
+                                    <label for="Document_type">Tipo de documento *</label>
+                                    <select class="form-select form-control" id="Document_type" name="Document_type" aria-label="Floating label select example">
+                                        <option value="CC">CC</option>
+                                        <option value="TI">TI</option>
+                                        <option value="CE">CE</option>
                                     </select>
                                   </div>
                             </div>
                             <div class="form-group ">
-                                <label for="name"><b>Número de documento *</b></label>
-                                <input id="name"  type="text" name="name" class="form-control">
+                                <label for="document_number"><b>Número de documento *</b></label>
+                                <input id="document_number"  type="text" name="document_number" class="form-control">
 
                             </div>
                             <div>
-                                <label for="floatingSelect">Cargue Documen. Identificacion *</label>
-                                <button type="button" class="btn btn-primary form-control" disabled>Primary button</button>
+                                <label for="identify_document">Cargue Documen. Identificacion *</label>
+                                <button id="identify_document" name="identify_document" type="button" class="btn btn-primary form-control" disabled>Examinar</button>
                             </div>
                             <br>
                             <div class="form-group">
                                 <div >
-                                    <label >País de expedicón *</label>
-                                    <select class="form-select form-control" id="floatingSelect" aria-label="Floating label select example">
-                                      <option value="1">Colombia</option>
-                                      <option value="2">Otros</option>
+                                    <label for="document_issunig_country" >País de expedicón *</label>
+                                    <select class="form-select form-control" id="document_issunig_country" name="document_issunig_country" aria-label="Floating label select example">
+name                                      <option selected>Seleccione</option>
+                                      @foreach ( $courses as $path)
+                                                <option value="">{{ $path-> }}</option>
+                                            @endforeach
                                     </select>
                                   </div>
                             </div>
                             <div class="form-group">
-                                <label for="description"><b>Departamento donde fue expedido*</b></label>
+                                <label for="issuing_department"><b>Departamento donde fue expedido*</b></label>
                                 <div >
-                                    <select class="form-select form-control" id="floatingSelect" aria-label="Floating label select example">
+                                    <select class="form-select form-control" id="issuing_department"  name="issuing_department" aria-label="Floating label select example">
                                       <option selected>Seleccione</option>
                                       <option value="1">Cédula de Ciudadanía</option>
                                       <option value="2">Tarjeta de Identidad</option>
@@ -63,41 +66,124 @@
                                   </div>
                             </div>
                             <div class="form-group">
-                                <label for="description"><b>Municipio donde fue expedido*</b></label>
+                                <label for="issuing_municipality">Municipio donde fue expedido*</label>
                                 <div >
-                                    <select class="form-select form-control" id="floatingSelect" aria-label="Floating label select example">
+                                    <select class="form-select form-control" id="issuing_municipality" name="issuing_municipality" aria-label="Floating label select example">
                                       <option selected>Seleccione</option>
-                                      <option value="1">Cédula de Ciudadanía</option>
-                                      <option value="2">Tarjeta de Identidad</option>
+                                      <option value="Risaralda">Risaralda</option>
+                                      <option value="Cauca">Cauca</option>
                                     </select>
                                   </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="description"><b>Descripción:</b></label>
-                                <input id="description" class="form-control" type="text" name="description">
+                                <label for="id_expedition_date"><b>Fecha de expedición *</b></label>
+                                <input id="id_expedition_date" class="form-control" type="date" name="id_expedition_date">
                             </div>
 
-                            <div class="form-group">
-                                <label for="duration"><b>Duración (horas):</b></label>
-                                <input id="duration" class="form-control" type="text" name="duration">
-                            </div>
-                            <div class="form-group">
-                                <label for="imagen"><b>Cargue la imagen del curso:</b></label>
-                                <input id="imagen" class="" type="file" name="imagen">
-                            </div>
-                            <br>
-                            <div class="button text-center">
-                                <button class="btn btn-success" type="submit">Crear</button>
-                            </div>
-                        </form>
-                    </div>
+
                 </div>
-                <div class="col-sm">
+                <div class="col">
+                    <div class="col-12">
 
+
+                        <div class="form-group">
+                            <label ><b>Datos de identificación</b></label>
+                            <div class="form-group ">
+                                <label for="names">Nombres *</label>
+                                <input id="names"  type="text" name="names" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="first_last_name">Primer apellido *</label>
+                            <input id="first_last_name"  type="text" name="first_last_name" class="form-control">
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="second_last_name">segundo apellido</label>
+                            <input id="second_last_name"  type="text" name="second_last_name" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <div >
+                                <label for="gender">Género *</label>
+                                <select class="form-select form-control" id="gender" name="gender" aria-label="Floating label select example">
+                                  <option value="M">M</option>
+                                  <option value="F">F</option>
+                                  <option value="OTROS">OTROS</option>
+                                </select>
+                              </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_date"><b>Fecha de nacimiento *</b></label>
+                            <input id="birth_date" class="form-control" type="date" name="birth_date">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_country">País de nacimiento *</label>
+                            <div >
+                                <select class="form-select form-control" id="birth_country" name="birth_country" aria-label="Floating label select example">
+                                  <option selected>Seleccione</option>
+                                  <option value="1">COLOMBIA</option>
+                                  <option value="2"></option>
+                                </select>
+                              </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth_departament"><b>Departamento de nacimiento *</b></label>
+                            <div >
+                                <select class="form-select form-control" id="birth_departament" name="birth_departament" aria-label="Floating label select example">
+                                  <option selected>Seleccione</option>
+                                  <option value="1">Risaralda</option>
+                                  <option value="2"></option>
+                                </select>
+                              </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_birth_municipality">Municipio de nacimiento *</label>
+                            <div >
+                                <select class="form-select form-control" id="id_birth_municipality" name="id_birth_municipality" aria-label="Floating label select example">
+                                  <option selected>Seleccione</option>
+                                  <option value="1">Risaralda</option>
+                                  <option value="2"></option>
+                                </select>
+                              </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="stratum"><b>Estrato socioeconómico*</b></label>
+                            <div >
+                                <select class="form-select form-control" id="stratum"  name="stratum" aria-label="Floating label select example">
+                                  <option selected>Seleccione</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+
+                                </select>
+                              </div>
+                        </div>
+                        <br>
+
+                        <div class="button text-center">
+                            <a href="/students/" type="button" class="btn btn-secondary btn-sm">Regresar</a>
+                            <button type="submit" class="btn btn-primary btn-sm">Continuar</button>
+                        </div>
+
+
+
+
+                    </form>
                 </div>
             </div>
-        </div>
+                 </div>
+                    </div>
+
+
+
 
 
 
@@ -105,7 +191,6 @@
 
 
                          </div>
-                         <div class="col-6">Contenedor de 7 columnna</div>
                        </div>
                      </div>
       </div>

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
+use App\Models\Department;
+use App\Models\Municipality;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -26,7 +29,10 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        $countries = Country::all();
+        $departaments = Department::all();
+        $municipalities = Municipality::all();
+        return view('students.create', compact('countries', 'departaments', 'municipalities'));
     }
 
     /**
