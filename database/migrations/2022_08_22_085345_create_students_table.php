@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->enum('Document_type', ['CC', 'TI', 'CE']);
+            $table->enum('document_type', ['CC', 'TI', 'CE']);
             $table->integer('document_number');
             $table->string('identify_document');
             $table->unsignedBigInteger('issuing_municipality');

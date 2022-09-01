@@ -41,16 +41,16 @@
                             </div>
                             <div>
                                 <label for="identify_document">Cargue Documen. Identificacion *</label>
-                                <button id="identify_document" name="identify_document" type="button" class="btn btn-primary form-control" disabled>Examinar</button>
-                            </div>
+                                <input id="identity_document" class="" type="file"  name="identity_document" accept="application/pdf">
+                                </div>
                             <br>
                             <div class="form-group">
                                 <div >
                                     <label for="document_issunig_country" >País de expedicón *</label>
                                     <select class="form-select form-control" id="document_issunig_country" name="document_issunig_country" aria-label="Floating label select example">
-name                                      <option selected>Seleccione</option>
-                                      @foreach ( $courses as $path)
-                                                <option value="">{{ $path-> }}</option>
+                                       <option selected>Seleccione</option>
+                                      @foreach ( $countries as $land)
+                                                <option value="">{{$land->name}}</option>
                                             @endforeach
                                     </select>
                                   </div>

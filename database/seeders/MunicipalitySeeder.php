@@ -17,92 +17,92 @@ class MunicipalitySeeder extends Seeder
     {
         Municipality::create([
             'id' => 1,
-            'name' => 'Envigado',
-            'department_id' => '1'
+            'name_municipalitie' => 'Envigado',
+            'id_departament_belongs' => '1'
         ]);
 
         Municipality::create([
             'id' => 2,
-            'name' => 'Medellín',
-            'department_id' => '1'
+            'name_municipalitie' => 'Medellín',
+            'id_departament_belongs' => '1'
         ]);
 
         Municipality::create([
             'id' => 3,
-            'name' => 'Rionegro',
-            'department_id' => '1'
+            'name_municipalitie' => 'Rionegro',
+            'id_departament_belongs' => '1'
         ]);
 
         Municipality::create([
             'id' => 4,
-            'name' => 'Bogotá',
-            'department_id' => '2'
+            'name_municipalitie' => 'Bogotá',
+            'id_departament_belongs' => '2'
         ]);
 
         Municipality::create([
             'id' => 5,
-            'name' => 'Facatativá',
-            'department_id' => '2'
+            'name_municipalitie' => 'Facatativá',
+            'id_departament_belongs' => '2'
         ]);
 
         Municipality::create([
             'id' => 6,
-            'name' => 'Soacha',
-            'department_id' => '2'
+            'name_municipalitie' => 'Soacha',
+            'id_departament_belongs' => '2'
         ]);
 
         Municipality::create([
             'id' => 7,
-            'name' => 'DosQuebradas',
-            'department_id' => '3'
+            'name_municipalitie' => 'DosQuebradas',
+            'id_departament_belongs' => '3'
         ]);
 
         Municipality::create([
             'id' => 8,
-            'name' => 'Santa Rosa',
-            'department_id' => '3'
+            'name_municipalitie' => 'Santa Rosa',
+            'id_departament_belongs' => '3'
         ]);
 
         Municipality::create([
             'id' => 9,
-            'name' => 'Pereira',
-            'department_id' => '3'
+            'name_municipalitie' => 'Pereira',
+            'id_departament_belongs' => '3'
         ]);
 
         Municipality::create([
             'id' => 10,
-            'name' => 'La Victoria',
-            'department_id' => '4'
+            'name_municipalitie' => 'La Victoria',
+            'id_departament_belongs' => '4'
         ]);
 
         Municipality::create([
             'id' => 11,
-            'name' => 'Maracay',
-            'department_id' => '4'
+            'name_municipalitie' => 'Maracay',
+            'id_departament_belongs' => '4'
         ]);
 
         Municipality::create([
             'id' => 12,
-            'name' => 'San Mateo',
-            'department_id' => '4'
+            'name_municipalitie' => 'San Mateo',
+            'id_departament_belongs' => '4'
         ]);
 
         Municipality::create([
             'id' => 13,
-            'name' => 'Guacara',
-            'department_id' => '5'
+            'name_municipalitie' => 'Guacara',
+            'id_departament_belongs' => '5'
         ]);
 
         Municipality::create([
             'id' => 14,
-            'name' => 'Puerto Cabello',
-            'department_id' => '5'
+            'name_municipalitie' => 'Puerto Cabello',
+            'id_departament_belongs' => '5'
         ]);
 
         Municipality::create([
             'id' => 15,
-            'name' => 'Valencia',
-            'department_id' => '5'
+            'name_municipalitie' => 'Valencia',
+            'id_departament_belongs' => '5'
         ]);
     }
 }

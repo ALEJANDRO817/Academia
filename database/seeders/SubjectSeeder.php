@@ -18,19 +18,19 @@ class SubjectSeeder extends Seeder
         Subject::create([
             'id' => 1,
             'name' => 'Programacion',
-            'hourly_intensity' => '20'
+            'timetable' => '20'
         ]);
 
         Subject::create([
             'id' => 2,
             'name' => 'trabajo',
-            'hourly_intensity' => '30'
+            'timetable' => '30'
         ]);
 
         Subject::create([
             'id' => 3,
             'name' => 'Laboracion',
-            'hourly_intensity' => '30'
+            'timetable' => '30'
         ]);
     }
 }

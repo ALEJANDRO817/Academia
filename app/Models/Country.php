@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Country extends Model
 {
     use HasFactory;
-    protected $fillable = ['id', 'name_departament'];
-    public function departaments(){
+    protected $fillable = ['id', 'name_country'];
+    public function departments(){
         return $this->hasMany(Department::class);
     }
 }
+
+

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name_municipalitie');
             $table->unsignedBigInteger('id_departament_belongs');
-            $table->foreign('id_departament_belongs')->references('id')->on('departaments')->onDelete('cascade')->onUpdate('cascade');;
+            $table->foreign('id_departament_belongs')->references('id')->on('departments')->onDelete('cascade')->onUpdate('cascade');;
         });
     }
 

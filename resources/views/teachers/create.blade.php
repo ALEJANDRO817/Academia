@@ -58,7 +58,7 @@
                         <div class="button text-center">
                             <button class="btn btn-success" type="submit">Crear</button>
                             <select class="form-select form-control" id="courses_id" name="courses_id" aria-label="Floating label select example">
-                                @foreach ( $countries as $terrain)
+                                @foreach ( $tutor as $terrain)
                                                 <option value="">{{ $terrain->name }}</option>
                                             @endforeach
 
