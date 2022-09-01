@@ -17,7 +17,9 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   $countries = Country::all();
+        $departaments = Department::all();
+        $municipalities = Municipality::all();
         $trainee = Student::all();
         return view('students.index', compact('trainee'));
        // return $trainee;
@@ -110,7 +112,7 @@ class StudentController extends Controller
             $trainee->identify_document = $request->file('identify_document')->store('public/students/identify_document');
         }
         $trainee->save();
-        return view('students.edit_student');
+        return view('students.add_student');
     }
 
     /**

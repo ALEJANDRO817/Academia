@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\storeTeacherRequest;
+use App\Models\Course;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,6 @@ class TeacherController extends Controller
     public function create()
     {
 
-        return view('teachers.create');
     }
 
     /**
@@ -117,7 +117,7 @@ class TeacherController extends Controller
 
         $tutor->save();
         // return $request;
-        return view('teachers.creat_teacher');
+        return view('teachers.edit_teacher');
     }
 
     /**
