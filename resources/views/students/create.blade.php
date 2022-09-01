@@ -49,8 +49,8 @@
                                     <label for="document_issunig_country" >País de expedicón *</label>
                                     <select class="form-select form-control" id="document_issunig_country" name="document_issunig_country" aria-label="Floating label select example">
 name                                      <option selected>Seleccione</option>
-                                      @foreach ( $courses as $path)
-                                                <option value="">{{ $path-> }}</option>
+                                      @foreach ( $countries as $path)
+                                                <option value="">{{ $path->name }}</option>
                                             @endforeach
                                     </select>
                                   </div>

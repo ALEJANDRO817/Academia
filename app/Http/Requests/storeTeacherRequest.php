@@ -34,6 +34,8 @@ class storeTeacherRequest extends FormRequest
                 'identity_document' => 'required|mimes:pdf'
 
 
+
+
         ];
     }
 }

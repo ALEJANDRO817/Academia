@@ -14,7 +14,7 @@
                     <form action="/teachers/{{$tutor->id}}" method="POST" class="mx-3 px-3 my-5 pt-2 pb-5" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
-                        <h2 class="text-center mt-5">Editar Curso</h2>
+                        <h2 class="text-center mt-5">Editar Docente</h2>
                         <br>
                         <div class="form-group">
                             <label for="name"><b>Nombre del Docente:</b></label>

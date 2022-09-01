@@ -13,7 +13,6 @@
                 <div class="form bg-light text-dark rounded">
                     <form action="/teachers" method="POST" class="mx-3 px-3 my-5 pt-2 pb-5" enctype="multipart/form-data">
                     @csrf
-
                     @if ($errors->any())
                         @foreach ($errors->all() as $alert )
                             <div class="alert alert-danger" role="alert">
@@ -54,15 +53,16 @@
                             <label for="identity_document"><b>Documento identidad:</b></label>
                             <input id="identity_document" class="" type="file"  name="identity_document" accept="application/pdf">
                         </div>
+
+                        {{-- <select class="form-select form-control" id="courses_id" name="courses_id" aria-label="Floating label select example">
+                            @foreach ( $courses as $terrain)
+                                            <option value="">{{ $terrain->name }}</option>
+                                        @endforeach
+                        </select> --}}
                         <br>
                         <div class="button text-center">
                             <button class="btn btn-success" type="submit">Crear</button>
-                            <select class="form-select form-control" id="courses_id" name="courses_id" aria-label="Floating label select example">
-                                @foreach ( $countries as $terrain)
-                                                <option value="">{{ $terrain->name }}</option>
-                                            @endforeach
 
-                            </select>
                         </div>
                     </form>
                 </div>
