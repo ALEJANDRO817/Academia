@@ -41,12 +41,12 @@
                             </div>
                             <div>
                                 <label for="identify_document">Cargue Documen. Identificacion *</label>
-                                <input id="identity_document" class="" type="file"  name="identity_document" accept="application/pdf">
+                                <input id="identify_document" class="" type="file"  name="identity_document" accept="application/pdf">
                                 </div>
                             <br>
                             <div class="form-group">
                                 <div >
-                                    <label for="document_issunig_country" >País de expedicón *</label>
+                                    <label for="document_issunig_country" >País de expedición *</label>
                                     <select class="form-select form-control" id="document_issunig_country" name="document_issunig_country" aria-label="Floating label select example">
 
                                        <option selected>Seleccione</option>
@@ -61,8 +61,9 @@
                                 <div >
                                     <select class="form-select form-control" id="issuing_department"  name="issuing_department" aria-label="Floating label select example">
                                       <option selected>Seleccione</option>
-                                      <option value="1">Cédula de Ciudadanía</option>
-                                      <option value="2">Tarjeta de Identidad</option>
+                                      @foreach ( $departaments as $top)
+                                                <option value="">{{$top->name}}</option>
+                                            @endforeach
                                     </select>
                                   </div>
                             </div>
@@ -71,8 +72,9 @@
                                 <div >
                                     <select class="form-select form-control" id="issuing_municipality" name="issuing_municipality" aria-label="Floating label select example">
                                       <option selected>Seleccione</option>
-                                      <option value="Risaralda">Risaralda</option>
-                                      <option value="Cauca">Cauca</option>
+                                      @foreach ( $municipalities as $exp)
+                                                <option value="">{{$exp->name}}</option>
+                                            @endforeach
                                     </select>
                                   </div>
                             </div>
@@ -127,8 +129,9 @@
                             <div >
                                 <select class="form-select form-control" id="birth_country" name="birth_country" aria-label="Floating label select example">
                                   <option selected>Seleccione</option>
-                                  <option value="1">COLOMBIA</option>
-                                  <option value="2"></option>
+                                  @foreach ( $countries as $land)
+                                  <option value="">{{$land->name}}</option>
+                              @endforeach
                                 </select>
                               </div>
                         </div>
@@ -138,8 +141,9 @@
                             <div >
                                 <select class="form-select form-control" id="birth_departament" name="birth_departament" aria-label="Floating label select example">
                                   <option selected>Seleccione</option>
-                                  <option value="1">Risaralda</option>
-                                  <option value="2"></option>
+                                  @foreach ( $departaments as $top)
+                                  <option value="">{{$top->name}}</option>
+                              @endforeach
                                 </select>
                               </div>
                         </div>
@@ -149,8 +153,10 @@
                             <div >
                                 <select class="form-select form-control" id="id_birth_municipality" name="id_birth_municipality" aria-label="Floating label select example">
                                   <option selected>Seleccione</option>
-                                  <option value="1">Risaralda</option>
-                                  <option value="2"></option>
+                                  @foreach ( $municipalities as $exp)
+                                                <option value="">{{$exp->name}}</option>
+                                            @endforeach
+                                            {{-- comment --}}
                                 </select>
                               </div>
                         </div>
