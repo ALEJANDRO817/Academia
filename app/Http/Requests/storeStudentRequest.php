@@ -24,6 +24,7 @@ class storeStudentRequest extends FormRequest
     public function rules()
     {
         return [
+            // 'document_issunig_country' => 'required',
             'document_number' => 'required|integer',
             'identify_document' => 'required|mimes:pdf',
             'expedition_date' => 'required:nullable|date',

@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="bg-light text-dark rounded mt-5 pt-5 mb-5 pb-5 text-center">
-        <img src="{{ Storage::url($grade->imagen) }}" width="350" height="310" class="mb-5">
+        <img src="{{ Storage::url($grade->imagen) }}" width="370" height="310" class="mb-5">
         <p class="card-text"> <b>Contenido:</b> {{$grade->description}} </p>
         <p class="card-text"> <b>Duración:</b> {{$grade->duration}} Horas</p>
         <div class="text-center p-3">

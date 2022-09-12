@@ -16,10 +16,6 @@
                             </div>
                         @endforeach
                     @endif
-
-
-
-
                         <div class="row">
                          <div class="col-6">
 
@@ -47,9 +43,9 @@
                             <div class="form-group">
                                 <div >
                                     <label for="document_issunig_country" >País de expedición *</label>
-                                    <select class="form-select form-control" id="document_issunig_country" name="document_issunig_country" aria-label="Floating label select example">
+                                    <select class="form-select form-control" id="document_issunig_country" name="document_issunig_country" aria-label="Floating label select example" required>
 
-                                       <option selected>Seleccione</option>
+                                       <option value="">Seleccione</option>
                                        @foreach ( $countries as $land)
                                                 <option value="">{{$land->name}}</option>
                                             @endforeach
@@ -59,8 +55,8 @@
                             <div class="form-group">
                                 <label for="issuing_department"><b>Departamento donde fue expedido*</b></label>
                                 <div >
-                                    <select class="form-select form-control" id="issuing_department"  name="issuing_department" aria-label="Floating label select example">
-                                      <option selected>Seleccione</option>
+                                    <select class="form-select form-control" required id="issuing_department"  name="issuing_department" aria-label="Floating label select example">
+                                      <option value="">Seleccione</option>
                                       @foreach ( $departamentos as $top)
                                                 <option value="">{{$top->name}}</option>
                                             @endforeach
@@ -71,8 +67,8 @@
                             <div class="form-group">
                             <label for="id_issuing_municipalityy">Municipio donde fue expedido *</label>
                             <div >
-                                <select class="form-select form-control" id="id_issuing_municipalityy" name="id_issuing_municipalityy" >
-                                  <option>Seleccione</option>
+                                <select class="form-select form-control" required id="id_issuing_municipalityy" name="id_issuing_municipalityy" >
+                                  <option value="">Seleccione</option>
                                   @foreach ( $municipalities as $expr)
                                                 <option value="{{$expr->id}}">{{$expr->name}}</option>
                                             @endforeach
@@ -112,7 +108,8 @@
                         <div class="form-group">
                             <div >
                                 <label for="gender">Género *</label>
-                                <select class="form-select form-control" id="gender" name="gender" aria-label="Floating label select example">
+                                <select class="form-select form-control"  required id="gender" name="gender" aria-label="Floating label select example">
+                                  <option value="">seleccione</option>
                                   <option value="M">M</option>
                                   <option value="F">F</option>
                                   <option value="OTROS">OTROS</option>
@@ -128,8 +125,8 @@
                         <div class="form-group">
                             <label for="birth_municipality">País de nacimiento *</label>
                             <div >
-                                <select class="form-select form-control" id="birth_municipality" name="birth_municipality" aria-label="Floating label select example">
-                                  <option selected>Seleccione</option>
+                                <select class="form-select form-control" required id="birth_municipality" name="birth_municipality" aria-label="Floating label select example">
+                                  <option value="">Seleccione</option>
                                   @foreach ( $countries as $land)
                                   <option value="">{{$land->name}}</option>
                               @endforeach
@@ -140,8 +137,8 @@
                         <div class="form-group">
                             <label for="birth_municipality"><b>Municipio de nacimiento *</b></label>
                             <div >
-                                <select class="form-select form-control" id="birth_municipality" name="birth_municipality">
-                                  <option selected>Seleccione</option>
+                                <select class="form-select form-control" required id="birth_municipality" name="birth_municipality">
+                                  <option value="">Seleccione</option>
                                   @foreach ( $municipalities as $top)
                                   <option value="{{$top->id}}">{{$top->name}}</option>
                               @endforeach
@@ -149,13 +146,13 @@
                               </div>
                         </div>
 
-                        
+
 
                         <div class="form-group">
                             <label for="stratum"><b>Estrato socioeconómico*</b></label>
                             <div >
-                                <select class="form-select form-control" id="stratum"  name="stratum" aria-label="Floating label select example">
-                                  <option selected>Seleccione</option>
+                                <select class="form-select form-control" required id="stratum"  name="stratum" aria-label="Floating label select example">
+                                  <option value="">Seleccione</option>
                                   <option value="1">1</option>
                                   <option value="2">2</option>
                                   <option value="3">3</option>
@@ -167,8 +164,8 @@
                         <div class="form-group row">
                             <label for="id_course" class="col-sm-6 col-form-label">Curso</label>
                             <div class="col-sm-6">
-                                <select class="form-control" name="id_course" id="id_course">
-                                    <option>Seleccionar</option>
+                                <select class="form-control" required  name="id_course" id="id_course">
+                                    <option value="">Seleccionar</option>
                                     @foreach ( $courses as $grade)
                                         <option value="{{ $grade->id }}">{{ $grade->name }}</option>
                                     @endforeach

@@ -13,7 +13,12 @@
 
             <div class="col-sm">
                 <div class="card" style="width: 20rem;">
-                    <img src="{{ Storage::url($pet->imagen) }}" width="300" height="220" alt="">
+
+                    @foreach ( $trainee as $imagen)
+                    <iframe src="{{Storage::url($imagen->identify_document) }}" width="318" height="250"></iframe>
+
+                    @endforeach
+
                     <div class="card-body">
                         <h5 class="card-title"> Nombres: {{$pet->name}}</h5>
                         <h5 class="card-title"> Apellidos: {{$pet->first_last_name}} {{$pet->second_last_name}} </h5>

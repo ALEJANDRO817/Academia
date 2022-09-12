@@ -46,24 +46,26 @@
                                         <input type="file" value="{{$trainee->identify_document}}" class="hidden" id="identify_document" name="identify_document" accept="application/pdf" title="Examinar"/>
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
                                     <label for="document_issunig_country" class="col-sm-6 col-form-label">País de expedición *</label>
-                                    @foreach ( $query as $consult )
-                                        <label for="document_issunig_country" class="col-sm-6 col-form-label"></label>
+                                    @foreach ( $procces as $consult )
+                                        <label for="document_issunig_country" ></label>
                                     @endforeach
                                     <div class="col-sm-6">
                                         <select class="form-control" name="document_issunig_country" id="document_issunig_country">
-                                        <option selected>{{$consult->nameCountry}}</option>                                      
+                                        <option selected>{{$consult->nameCountry}}</option>
                                               @foreach ( $countries as $land)
                                                 <option value="">{{ $land->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
                                     <label for="issuing_department" class="col-sm-6 col-form-label">Depto. donde fue expedido *</label>
-                                    @foreach ( $query as $consult )
-                                        <label for="document_issunig_country"  class="col-sm-6 col-form-label" ></label>
+                                    @foreach ( $procces as $consult )
+                                        <label for="document_issunig_country"></label>
                                     @endforeach
                                     <div class="col-sm-6">
                                         <select class="form-control" id="issuing_department" name="issuing_department">
@@ -76,12 +78,12 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="id_issuing_municipalityy" class="col-sm-6 col-form-label">Municipio donde fue expedido *</label>
-                                    @foreach ( $query as $consult )
-                                        <label for="document_issunig_country" class="col-sm-6 col-form-label"></label>
+                                    @foreach ( $procces as $consult )
+                                        <label for="document_issunig_country" ></label>
                                     @endforeach
                                     <div class="col-sm-6">
-                                        <select class="form-control" id="id_issuing_municipalityy" name="id_issuing_municipalityy">
-                                            <option selected>{{ $consult->nameMuni}}</option>
+                                        <select class="form-control" required id="id_issuing_municipalityy" name="id_issuing_municipalityy">
+                                            <option value="">seleccionar</option>
                                             @foreach ( $municipalities as $city)
                                                 <option value="{{ $city->id }}">{{ $city->name }}</option>
                                             @endforeach
@@ -121,8 +123,8 @@
                             <div class="form-group row">
                                 <label for="gender" class="col-sm-6 col-form-label">Género *</label>
                                 <div class="col-sm-6">
-                                    <select class="form-control"  id="gender" name="gender">
-                                        <option selected>Seleccionar</option>
+                                    <select class="form-control" required id="gender" name="gender">
+                                        <option value="">Seleccionar</option>
                                         <option value="M">M</option>
                                         <option value="F">F</option>
                                         <option value="OTROS">OTROS</option>
@@ -137,12 +139,12 @@
                             </div>
                             <div class="form-group row">
                                 <label for="birth_municipality" class="col-sm-6 col-form-label">País de nacimiento *</label>
-                                @foreach ( $query2 as $consult2 )
-                                    <label for="document_issunig_country" class="col-sm-6 col-form-label"></label>
+                                @foreach ( $procces_2 as $consult2 )
+                                    <label for="document_issunig_country" ></label>
                                 @endforeach
                                 <div class="col-sm-6">
                                     <select class="form-control" name="birth_municipality" id="birth_municipality">
-                                        <option selected>{{$consult2->birthCountry}}</option>
+                                        <option selected>{{$consult2->country}}</option>
                                         @foreach ( $countries as $land)
                                             <option value="">{{ $land->name }}</option>
                                         @endforeach
@@ -151,12 +153,12 @@
                             </div>
                             <!-- <div class="form-group row">
                                 <label for="birth_municipality" class="col-sm-6 col-form-label">Departamento de nacimiento *</label>
-                                @foreach ( $query2 as $consult2 )
-                                    <label for="document_issunig_country" class="col-sm-6 col-form-label">{{ $consult2->birthDepart}}</label>
+                                @foreach ( $procces_2 as $consult2 )
+                                    <label for="document_issunig_country" class="col-sm-6 col-form-label">{{ $consult2->departament}}</label>
                                 @endforeach
                                 <div class="col-sm-6">
                                     <select class="form-control" name="birth_municipality" id="birth_municipality">
-                                        <option selected>{{$consult2->birthDepart}}</option>
+                                        <option selected>{{$consult2->departament}}</option>
                                         @foreach ( $departamentos as $dept)
                                             <option value="">{{ $dept->name }}</option>
                                         @endforeach
@@ -165,12 +167,12 @@
                             </div> -->
                             <div class="form-group row">
                                 <label for="birth_municipality" class="col-sm-6 col-form-label">Municipio de nacimiento *</label>
-                                @foreach ( $query2 as $consult2 )
-                                <label for="birth_municipality" class="col-sm-6 col-form-label"></label>
+                                @foreach ( $procces_2 as $consult2 )
+                                <label for="birth_municipality"></label>
                                 @endforeach
                                 <div class="col-sm-6">
-                                    <select class="form-control" name="birth_municipality" id="birth_municipality">
-                                        <option selected>{{$consult2->birthMuni}}</option>
+                                    <select class="form-control" required name="birth_municipality" id="birth_municipality">
+                                        <option value="">seleccionar</option>
                                         @foreach ( $municipalities as $city)
                                             <option value="{{ $city->id }}">{{ $city->name }}</option>
                                         @endforeach
@@ -191,12 +193,12 @@
                             </div>
                             <div class="form-group row">
                                 <label for="id_course" class="col-sm-6 col-form-label">Curso</label>
-                                @foreach ( $query3 as $consult3 )
-                                    <label for="id_course" class="col-sm-6 col-form-label"></label>
+                                @foreach ( $procces_3 as $consult3 )
+                                    <label for="id_course"></label>
                                 @endforeach
                                 <div class="col-sm-6">
-                                    <select class="form-control" name="id_course" id="id_course">
-                                        <option >seleccionar</option>
+                                    <select class="form-control" required name="id_course" id="id_course">
+                                        <option value="" >seleccionar</option>
                                         @foreach ( $courses as $grade)
                                             <option value="{{ $grade->id }}">{{ $grade->name }}</option>
                                         @endforeach

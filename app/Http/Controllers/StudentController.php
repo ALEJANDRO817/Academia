@@ -79,7 +79,7 @@ class StudentController extends Controller
     public function show($id)
     {
         $trainee = Student::find($id);
-        $query = Municipality::join(
+        $procces = Municipality::join(
             'students', 'students.id_issuing_municipalityy', 'municipalities.id'
         )
         ->join(
@@ -89,10 +89,10 @@ class StudentController extends Controller
             'countries', 'countries.id', 'departamentos.id_country_belongs'
         )
         ->where('students.id', $id)
-        ->select('municipalities.name as nameMuni', 'departamentos.name as nameDepart', 'countries.name as nameCountry')
+        ->select('municipalities.name as muni', 'departamentos.name as nameDepart', 'countries.name as nameCountry')
         ->get();
 
-        $query2 = Municipality::join(
+        $procces_2 = Municipality::join(
             'students', 'students.birth_municipality', 'municipalities.id'
         )
         ->join(
@@ -102,10 +102,10 @@ class StudentController extends Controller
             'countries', 'countries.id', 'departamentos.id_country_belongs'
         )
         ->where('students.id', $id)
-        ->select('municipalities.name as birthMuni', 'departamentos.name as birthDepart', 'countries.name as birthCountry')
+        ->select('municipalities.name as birthMuni', 'departamentos.name as departament', 'countries.name as country')
         ->get();
 
-        $query3 = Course::join(
+        $procces_3 = Course::join(
             'students', 'students.id_course', 'courses.id'
         )
         ->where('students.id', $id)
@@ -113,12 +113,12 @@ class StudentController extends Controller
         ->get();
 
 
-        return view('students.show', compact('trainee', 'query', 'query2', 'query3') );
+        return view('students.show', compact('trainee', 'procces', 'procces_2', 'procces_3') );
         // return 'El id del estudiante es: ' . $id;
 
-        // return $query;
-        // $newQuery = json_decode($query, true);
-        // $response = json_decode($query->text()) ;
+        // return $procces;
+        // $newprocces = json_decode($procces, true);
+        // $response = json_decode($procces->text()) ;
         // return  $response;
 
 
@@ -138,7 +138,7 @@ class StudentController extends Controller
         $countries = Country::all();
         $departamentos = Departamento::all();
         $municipalities = Municipality::all();
-        $query = Municipality::join(
+        $procces = Municipality::join(
             'students', 'students.id_issuing_municipalityy', 'municipalities.id'
         )
         ->join(
@@ -148,10 +148,10 @@ class StudentController extends Controller
             'countries', 'countries.id', 'departamentos.id_country_belongs'
         )
         ->where('students.id', $id)
-        ->select('municipalities.name as nameMuni', 'departamentos.name as nameDepart', 'countries.name as nameCountry')
+        ->select('municipalities.name as muni', 'departamentos.name as nameDepart', 'countries.name as nameCountry')
         ->get();
 
-        $query2 = Municipality::join(
+        $procces_2 = Municipality::join(
             'students', 'students.birth_municipality', 'municipalities.id'
         )
         ->join(
@@ -161,10 +161,10 @@ class StudentController extends Controller
             'countries', 'countries.id', 'departamentos.id_country_belongs'
         )
         ->where('students.id', $id)
-        ->select('municipalities.name as birthMuni', 'departamentos.name as birthDepart', 'countries.name as birthCountry')
+        ->select('municipalities.name as birthMuni', 'departamentos.name as departament', 'countries.name as country')
         ->get();
 
-        $query3 = Course::join(
+        $procces_3 = Course::join(
             'students', 'students.id_course', 'courses.id'
         )
         ->where('students.id', $id)
@@ -172,7 +172,7 @@ class StudentController extends Controller
         ->get();
 
 
-        return view('students.edit', compact('trainee', 'query', 'query2', 'query3', 'courses', 'countries', 'departamentos', 'municipalities'));    }
+        return view('students.edit', compact('trainee', 'procces', 'procces_2', 'procces_3', 'courses', 'countries', 'departamentos', 'municipalities'));    }
 
     /**
      * Update the specified resource in storage.
