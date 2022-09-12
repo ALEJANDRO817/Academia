@@ -10,6 +10,6 @@ class Country extends Model
     use HasFactory;
     protected $fillable = ['id', 'name_departament'];
     public function departaments(){
-        return $this->hasMany(Department::class);
+        return $this->hasMany(Departamento::class);
     }
 }

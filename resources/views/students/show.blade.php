@@ -1,27 +1,71 @@
 @extends('layouts.appThree')
 
-@section('title', 'Mostrar cursos')
+@section('title', 'Mostrar Estudiantes')
 
 @section('content')
 
-    <div class="bg-light text-dark rounded mt-5 pt-5 mb-5 pb-5 text-center">
-        <img src="{{ Storage::url($grade->imagen) }}" width="350" height="310" class="mb-5">
-        <p class="card-text"> <b>Contenido:</b> {{$grade->description}} </p>
-        <p class="card-text"> <b>Duración:</b> {{$grade->duration}} Horas</p>
-        <div class="text-center p-3">
-            <a href="/students/{{$grade->id}}/edit" class="btn btn-warning">Editar</a>
+    <h1 class="text-center mt-4 ">Informacion de estudiante</h1>
 
+    <div class="container2 form bg-light text-dark rounded">
+        <h3 class="text-start mx-3 mt-5 pt-3">Información Básica</h3>
+        <br>
+
+        <hr>
+        <div class="row">
+            <div class="col-sm-5 mx-5 pb-3 ">
+                <h5>Documento de identidad</h5>
+                <br>
+                <div class="form-group row">
+                    @foreach ( $query as $consult )
+                        <div class="form-group ">
+                        <p><b>Tipo de documento: </b>{{$trainee->document_type}}</p>
+                        <p><b>No. de documento </b>{{$trainee->document_number}}</p>
+                        <p><b>Documento pdf:</b>
+                            <br>
+                            <iframe src="{{ Storage::url($trainee->identify_document) }}" width="250" height="200"></iframe></p>
+                        <p><b>País de expedición: </b>{{$consult->nameCountry}}</p>
+                        <p><b>Depto. de expedición: </b>{{$consult->nameDepart}}</p>
+                        <p><b>Municipio de expedición: </b>{{$consult->nameMuni}}</p>
+                        <p><b>Fecha de expedición: </b>{{$trainee->expedition_date}}</p>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="col-sm ms-5 me-5 pb-3 rounded">
+            </div>
+            <div class="col-sm-4 mx-5 px-1 pb-3 rounded">
+                <h5>Datos de identificación</h5>
+                <br>
+                <div class="form-group row">
+                    @foreach ( $query2 as $consult2 )
+                        <div class="form-group ">
+                            <p><b>Nombres: </b>{{$trainee->name}}</p>
+                            <p><b>Primer Apellido: </b>{{$trainee->first_last_name}}</p>
+                            <p><b>Segundo Apellido: </b>{{$trainee->second_last_name}}</p>
+                            <p><b>Género: </b>{{$trainee->gender}}</p>
+                            <p><b>Fecha de Nacimiento: </b>{{$trainee->birth_date}}</p>
+                            <p><b>País de Nacimiento: </b>{{$consult2->birthCountry}}</p>
+                            <p><b>Depto. de Nacimiento: </b>{{$consult2->birthDepart}}</p>
+                            <p><b>Municipio de Nacimiento: </b>{{$consult2->birthMuni}}</p>
+                            <p><b>Estrato Socioeconómico: </b>{{$trainee->stratum}}</p>
+                            @foreach ( $query3 as $consult3 )
+                                <p><b>Curso matriculado: </b>{{$consult3->name}}</p>
+                            @endforeach
+                        </div>
+                    @endforeach
+                </div>
+                <br>
+                <div class="button mb-3">
+                    <a href="/students/" class="btn btn-secondary">Regresar</a>
+                    <a href="/students/{{$trainee->id}}/edit" class="btn btn-success">Editar</a>
+                    <form class="form-group" action="/students/{{$trainee->id}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </div>
+            </div>
         </div>
-
+    </div>
     <br>
-    <br>
-
-    <form class="for-group" action="/students/{{$grade->id}}" method="POST">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">--Eliminar--</button>
-    </form>
-</div>
-
-
 @endsection

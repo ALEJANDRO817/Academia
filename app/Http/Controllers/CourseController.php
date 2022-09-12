@@ -54,6 +54,7 @@ class CourseController extends Controller
             $grade->imagen = $request->file('imagen')->store('public/courses');
         }
         $grade->save();//Comando para registrar la info en la bd
+        // return $grade;
         return view('courses.add_course');
         // return $grade->description;
         // return $grade;

@@ -19,10 +19,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             CountrySeeder::class,
-            DepartmentSeeder::class,
+            CourseSeeder::class,
             SubjectSeeder::class,
-            MunicipalitySeeder::class,
-            StudentSeeder::class,
+            DepartamentoSeeder::class,
+            MunicipalitySeeder::class
         ]);
     }
 }

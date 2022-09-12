@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\storeStudentRequest;
 use App\Models\Country;
-use App\Models\Department;
+use App\Models\Course;
+use App\Models\Departamento;
 use App\Models\Municipality;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -16,11 +18,13 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $countries = Country::all();
-        $departaments = Department::all();
+    {
+        $courses = Course::all();
+        $countries = Country::all();
+        $departamentos = Departamento::all();
         $municipalities = Municipality::all();
         $trainee = Student::all();
-        return view('students.index', compact('trainee'));
+        return view('students.index', compact('trainee', 'courses', 'countries', 'departamentos', 'municipalities'));
        // return $trainee;
     }
 
@@ -31,10 +35,12 @@ class StudentController extends Controller
      */
     public function create()
     {
+        $courses = Course::all();
         $countries = Country::all();
-        $departaments = Department::all();
+        $departamentos = Departamento::all();
         $municipalities = Municipality::all();
-        return view('students.create', compact('countries', 'departaments', 'municipalities'));
+        $trainee = Student::all();
+        return view('students.create', compact('trainee', 'courses', 'countries', 'departamentos', 'municipalities'));
     }
 
     /**
@@ -43,26 +49,23 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storeStudentRequest $request)
     {
         $trainee = new Student();
         $trainee->document_type = $request->input('document_type');
         $trainee->document_number = $request->input('document_number');
         if($request->hasFile('identify_document')){
-            $trainee->identify_document = $request->file('identify_document')->store('public/students/identify_document');
-        }
-        $trainee->document_issuing_country = $request->input('document_issuing_country');
-        $trainee->issuing_department = $request->input('issuing_department');
-        $trainee->issuing_municipality = $request->input('issuing_municipality');
+        $trainee->identify_document = $request->file('identify_document')->store('public/students/identify_document');}
+        $trainee->expedition_date = $request->input('expedition_date');
+        $trainee->id_issuing_municipalityy = $request->input('id_issuing_municipalityy');
         $trainee->name = $request->input('name');
         $trainee->first_last_name = $request->input('first_last_name');
         $trainee->second_last_name = $request->input('second_last_name');
         $trainee->gender = $request->input('gender');
         $trainee->birth_date = $request->input('birth_date');
-        $trainee->birth_country = $request->input('birth_country');
-        $trainee->birth_department = $request->input('birth_department');
         $trainee->birth_municipality = $request->input('birth_municipality');
         $trainee->stratum = $request->input('stratum');
+        $trainee->id_course = $request->input('id_course');
         $trainee->save();
         return view('students.add_student');
     }
@@ -76,9 +79,51 @@ class StudentController extends Controller
     public function show($id)
     {
         $trainee = Student::find($id);
-        return view('students.show' , compact('trainee'));
-        //return 'El id del estudiente es: ' . $id;
+        $query = Municipality::join(
+            'students', 'students.id_issuing_municipalityy', 'municipalities.id'
+        )
+        ->join(
+            'departamentos', 'departamentos.id', 'municipalities.id_departament_belongs'
+        )
+        ->join(
+            'countries', 'countries.id', 'departamentos.id_country_belongs'
+        )
+        ->where('students.id', $id)
+        ->select('municipalities.name as nameMuni', 'departamentos.name as nameDepart', 'countries.name as nameCountry')
+        ->get();
+
+        $query2 = Municipality::join(
+            'students', 'students.birth_municipality', 'municipalities.id'
+        )
+        ->join(
+            'departamentos', 'departamentos.id', 'municipalities.id_departament_belongs'
+        )
+        ->join(
+            'countries', 'countries.id', 'departamentos.id_country_belongs'
+        )
+        ->where('students.id', $id)
+        ->select('municipalities.name as birthMuni', 'departamentos.name as birthDepart', 'countries.name as birthCountry')
+        ->get();
+
+        $query3 = Course::join(
+            'students', 'students.id_course', 'courses.id'
+        )
+        ->where('students.id', $id)
+        ->select('courses.name as name')
+        ->get();
+
+
+        return view('students.show', compact('trainee', 'query', 'query2', 'query3') );
+        // return 'El id del estudiante es: ' . $id;
+
+        // return $query;
+        // $newQuery = json_decode($query, true);
+        // $response = json_decode($query->text()) ;
+        // return  $response;
+
+
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -89,10 +134,45 @@ class StudentController extends Controller
     public function edit($id)
     {
         $trainee = Student::find($id);
-        //return 'El id del estudiente es: ' . $id;
-        //return 'La informacion que usted quiere autualizar, se veria en formato array...' . $trainee;
-        return view('students.edit', compact('trainee'));
-    }
+        $courses = Course::all();
+        $countries = Country::all();
+        $departamentos = Departamento::all();
+        $municipalities = Municipality::all();
+        $query = Municipality::join(
+            'students', 'students.id_issuing_municipalityy', 'municipalities.id'
+        )
+        ->join(
+            'departamentos', 'departamentos.id', 'municipalities.id_departament_belongs'
+        )
+        ->join(
+            'countries', 'countries.id', 'departamentos.id_country_belongs'
+        )
+        ->where('students.id', $id)
+        ->select('municipalities.name as nameMuni', 'departamentos.name as nameDepart', 'countries.name as nameCountry')
+        ->get();
+
+        $query2 = Municipality::join(
+            'students', 'students.birth_municipality', 'municipalities.id'
+        )
+        ->join(
+            'departamentos', 'departamentos.id', 'municipalities.id_departament_belongs'
+        )
+        ->join(
+            'countries', 'countries.id', 'departamentos.id_country_belongs'
+        )
+        ->where('students.id', $id)
+        ->select('municipalities.name as birthMuni', 'departamentos.name as birthDepart', 'countries.name as birthCountry')
+        ->get();
+
+        $query3 = Course::join(
+            'students', 'students.id_course', 'courses.id'
+        )
+        ->where('students.id', $id)
+        ->select('courses.name as name')
+        ->get();
+
+
+        return view('students.edit', compact('trainee', 'query', 'query2', 'query3', 'courses', 'countries', 'departamentos', 'municipalities'));    }
 
     /**
      * Update the specified resource in storage.
@@ -110,7 +190,7 @@ class StudentController extends Controller
             $trainee->identify_document = $request->file('identify_document')->store('public/students/identify_document');
         }
         $trainee->save();
-        return view('students.add_student');
+        return view('students.edit_student');
     }
 
     /**
@@ -126,7 +206,7 @@ class StudentController extends Controller
         $documentName = str_replace('public/', '\storage\\', $urlDocument);
         $fullRoute = public_path() . $documentName;
         unlink($fullRoute);
-        $$trainee->delete();
+        $trainee->delete();
         return view('students.del_student');
     }
 }

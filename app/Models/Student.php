@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
-    protected $fillable = ['Document_type', 'document_number', 'identify_document','issuing_municipality',
-     'id_expedition_date', 'names', 'first_last_name', 'second_last_name', 'gender', 'birth_date',
-     'id_birth_municipality', 'stratum'];
+    protected $fillable = ['document_type', 'document_number',
+     'identify_document', 'expedition_date', 'id_issuing_municipalityy', 'name', 'first_last_name', 'second_last_name', 'gender', 'birth_date',
+     'birth_municipality', 'stratum', 'id_course'];
 
     public function municipalities(){
         return $this->belongsTo(Municipality::class);
@@ -18,11 +18,6 @@ class Student extends Model
     public function courses(){
         return $this->belongsTo(Course::class);
     }
-    public function teachers(){
-        return $this->belongsTo(Course::class);
-    }
-
-
 
 
 }

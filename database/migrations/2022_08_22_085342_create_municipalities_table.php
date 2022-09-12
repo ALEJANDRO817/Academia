@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('municipalities', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string('name_municipalitie');
+            $table->string('name');
             $table->unsignedBigInteger('id_departament_belongs');
-            $table->foreign('id_departament_belongs')->references('id')->on('departaments')->onDelete('cascade')->onUpdate('cascade');;
+            $table->timestamps();
+            $table->foreign('id_departament_belongs')->references('id')->on('departamentos')->onDelete('cascade')->onUpdate('cascade');;
         });
     }
 

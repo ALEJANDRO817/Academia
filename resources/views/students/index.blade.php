@@ -15,9 +15,13 @@
                 <div class="card" style="width: 20rem;">
                     <img src="{{ Storage::url($pet->imagen) }}" width="300" height="220" alt="">
                     <div class="card-body">
-                        <h5 class="card-title"> {{$pet->name}} </h5>
-                        {{-- <p class="card-text"> <b>Contenido:</b> {{$pet->description}} </p> --}}
-                        {{-- <p class="card-text"> <b>Duración:</b> {{$pet->duration}} Horas</p> --}}
+                        <h5 class="card-title"> Nombres: {{$pet->name}}</h5>
+                        <h5 class="card-title"> Apellidos: {{$pet->first_last_name}} {{$pet->second_last_name}} </h5>
+                        <h5 class="card-title"> Género: {{$pet->gender}}</h5>
+                        <h5 class="card-title"> Tipo Documento: {{$pet->document_type}}</h5>
+                        <h5 class="card-title"> N* documento: {{$pet->document_number}}</h5>
+                        {{-- <p class="card-text"> <b>Contenido:</b> {{$pet->first_last_name}} </p> --}}
+                        {{-- <p class="card-text"> <b>Duración:</b> {{$pet->second_last_name}} </p> --}}
                         <div class="text-center">
                             <a href="/students/{{$pet->id}}" class="btn btn-primary">Ver detalle</a>
                         </div>

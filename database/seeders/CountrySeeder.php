@@ -16,12 +16,12 @@ class CountrySeeder extends Seeder
     public function run()
     {
         Country::create([
-            'id' => 1,
+            //'id' => 1,
             'name' => 'Colombia'
         ]);
 
         Country::create([
-            'id' => 2,
+            //'id' => 2,
             'name' => 'Venezuela'
         ]);
     }
